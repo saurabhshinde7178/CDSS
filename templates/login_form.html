@@ -1,0 +1,126 @@
+{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login!!</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/static/Login/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/Login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/Login/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+{% block content %}
+	<div class="bg-container-contact100" style="background-image: url(/static/Login/images/a.jpg);">
+		<div class="contact100-header flex-sb-m">
+			<a href="#" class="contact100-header-logo">
+			
+			</a>
+
+			<div>
+				<button class="btn-show-contact100">
+					Login!!
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<button class="btn-hide-contact100">
+				<i class="zmdi zmdi-close"></i>
+			</button>
+
+			<div class="contact100-form-title" style="background-image: url(/static/Login/images/b.jpg);">
+				<span>Login!!</span>
+			</div>
+
+			<form class="contact100-form validate-form" method="POST" action="/login">
+				{{ form.hidden_tag() }}
+				<div class="wrap-input100 validate-input">
+					{{ wtf.form_field(form.username) }}
+					<span class="focus-input100"></span>
+			
+					
+			
+				</div>
+
+
+				<div class="wrap-input100 validate-input">
+					{{ wtf.form_field(form.password) }}
+					<span class="focus-input100"></span>
+					
+						
+			
+				</div>
+
+
+				<div class="wrap-input100 validate-input">
+					{{ wtf.form_field(form.remember) }}
+					<span class="focus-input100"></span>
+				
+			
+				</div>
+
+
+	
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						Send Now
+					</button>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+
+<!--===============================================================================================-->
+	<script src="/static/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/Login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/Login/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/Login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/Login/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/static/Login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/Login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/Login/js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+</body>
+</html>

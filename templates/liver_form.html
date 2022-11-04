@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Clinical Decision Support System</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="static/diseaseform/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/vendor/animate/animate.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/css/util.css">
+  <link rel="stylesheet" type="text/css" href="static/diseaseform/css/main.css">
+    <!-- Bootstrap core CSS -->
+    <link href="static/diseaseform/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/diseaseform/css/scrolling-nav.css" rel="stylesheet">
+                 <style>
+            * {box-sizing: border-box}
+            body {font-family: Verdana, sans-serif; margin:0}
+
+            /* Slideshow container */
+            .slideshow-container {
+              position: relative;
+              background: #f1f1f1f1;
+            }
+
+            /* Slides */
+            .mySlides {
+              display: none;
+              padding: 80px;
+              text-align: center;
+            }
+
+            /* Next & previous buttons */
+            .prev, .next {
+              cursor: pointer;
+              position: absolute;
+              top: 50%;
+              width: auto;
+              margin-top: -30px;
+              padding: 16px;
+              color: #888;
+              font-weight: bold;
+              font-size: 20px;
+              border-radius: 0 3px 3px 0;
+              user-select: none;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+              position: absolute;
+              right: 0;
+              border-radius: 3px 0 0 3px;
+            }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover, .next:hover {
+              background-color: rgba(0,0,0,0.8);
+              color: white;
+            }
+
+            /* The dot/bullet/indicator container */
+            .dot-container {
+                text-align: center;
+                padding: 20px;
+                background: #ddd;
+            }
+
+            /* The dots/bullets/indicators */
+            .dot {
+              cursor: pointer;
+              height: 15px;
+              width: 15px;
+              margin: 0 2px;
+              background-color: #bbb;
+              border-radius: 50%;
+              display: inline-block;
+              transition: background-color 0.6s ease;
+            }
+
+            /* Add a background color to the active dot/circle */
+            .active, .dot:hover {
+              background-color: #717171;
+            }
+
+            /* Add an italic font style to all quotes */
+            q {font-style: italic;}
+
+            /* Add a blue color to the author */
+            .author {color: cornflowerblue;}
+            .dropbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #3e8e41;
+            }
+
+            #myInput {
+                border-box: box-sizing;
+                background-image: url('searchicon.png');
+                background-position: 14px 12px;
+                background-repeat: no-repeat;
+                font-size: 16px;
+                padding: 14px 20px 12px 45px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #myInput:focus {outline: 3px solid #ddd;}
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f6f6f6;
+                min-width: 230px;
+                overflow: auto;
+                border: 1px solid #ddd;
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown a:hover {background-color: #ddd}
+
+            .show {display:block;}
+            </style>
+  </head>
+   {% block content %}
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">CDSS - Machine Learnig Way</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{ url_for('dashboard') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Testimonial</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+      <div class="container text-center">
+        <h1>Welcome to Clinical Decision Support System</h1>
+        <p class="lead" style="color: white">An efficient way to get predicted.</p>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>About this page</h2>
+            <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features
+            </p>
+         </div>
+        </div>
+      </div>
+    </section>
+     
+       <section id="services">
+  <div class="container-contact100">
+    <div class="wrap-contact100">
+      <form class="contact100-form validate-form" form action="/liverDiseasePredictionPage" method="POST" role="form">
+      
+       <label class="label-input100" for="email">Select symptom..</label>
+
+              <input style="width: 448px; height: 35px;" type="text" name="Age" class="form-control br-radius-zero" id="name" placeholder="Enter your age.." data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <div class="validation"></div>
+ 
+  
+                <span class="focus-input100"></span>
+          
+
+        <label class="label-input100" for="email">Select symptom..</label>
+       
+            
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Total_Bilirubin" id="email" placeholder="Total_Bilirubin :Enter a value between 0.4 to 75..)" data-rule="email" data-msg="Please enter a valid email" />
+                                    <div class="validation"></div>
+             
+
+                <span class="focus-input100"></span>
+          
+
+        <label class="label-input100" for="email">Select symptom..</label>
+
+        
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Direct_Bilirubin" id="subject" placeholder="Direct_Bilirubin : Enter a value between 0.2 to 19.7)" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+        
+         
+                <span class="focus-input100"></span>
+       
+
+        <label class="label-input100" for="email">Select symptom..</label>
+      
+       
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Alkaline_Phosphotase" id="subject" placeholder="Alkaline_Phosphotase : Enter a value between 175 to 2110)" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+           
+  
+                <span class="focus-input100"></span>
+     
+
+
+        <label class="label-input100" for="email">Select symptom..</label>
+  
+            
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Alamine_Aminotransferase" id="subject" placeholder="Alkaline_Phosphotase : Enter a value between 23 to 2000)" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+          
+                <span class="focus-input100"></span>
+  
+
+
+        <label class="label-input100" for="email">Select symptom..</label>
+      
+         
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Aspartate_Aminotransferase" id="subject" placeholder="Alkaline_Phosphotase : Enter a value between 25 to 4929" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+  
+                <span class="focus-input100"></span>
+
+        <label class="label-input100" for="email">Select symptom..</label>
+      
+         
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Total_Protiens" id="subject" placeholder="Total_Protiens : Enter a value between 5.8 to 9.6" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+  
+                <span class="focus-input100"></span>
+       
+        <label class="label-input100" for="email">Select symptom..</label>
+      
+         
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Albumin" id="subject" placeholder="Albumin : Enter a value between 25 to 4929" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+  
+                <span class="focus-input100"></span>
+
+        <label class="label-input100" for="email">Select symptom..</label>
+      
+         
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Albumin_and_Globulin_Ratio" id="subject" placeholder="Albumin_and_Globulin_Ratio : Enter a value between 25 to 4929" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+  
+                <span class="focus-input100"></span>
+
+
+        <label class="label-input100" for="email">Select symptom..</label>
+      
+         
+                <input style="width: 448px; height: 35px;" type="text" class="form-control br-radius-zero" name="Gender" id="subject" placeholder="Enter a value 0(Male) or 1(Female)  " data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+  
+                <span class="focus-input100"></span>
+
+        <div class="container-contact100-form-btn">
+          <button type="submit" class="contact100-form-btn">
+            Analyse Symptoms..
+          </button>
+        </div>
+      </form>
+
+      <div class="contact100-more flex-col-c-m" style="background-image: url('images/bg-01.jpg');">
+        <div class="flex-w size1 p-b-47">
+          <div class="txt1 p-r-25">
+            <span class="lnr lnr-map-marker"></span>
+          </div>
+
+          <div class="flex-col size2">
+            <span class="txt1 p-b-20">
+              Address
+            </span>
+
+            <span class="txt2">
+              Mada Center 8th floor, 379 Hudson St, New York, NY 10018 US
+            </span>
+          </div>
+        </div>
+
+        <div class="dis-flex size1 p-b-47">
+          <div class="txt1 p-r-25">
+            <span class="lnr lnr-phone-handset"></span>
+          </div>
+
+          <div class="flex-col size2">
+            <span class="txt1 p-b-20">
+              Lets Talk
+            </span>
+
+            <span class="txt3">
+              +1 800 1236879
+            </span>
+          </div>
+        </div>
+
+        <div class="dis-flex size1 p-b-47">
+          <div class="txt1 p-r-25">
+            <span class="lnr lnr-envelope"></span>
+          </div>
+
+          <div class="flex-col size2">
+            <span class="txt1 p-b-20">
+              General Support
+            </span>
+
+            <span class="txt3">
+              contact@example.com
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="dropDownSelect1"></div>
+   </section>
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="slideshow-container">
+
+                <div class="mySlides">
+                  <q>Individuals will achieve healthier lifestyles when prevention and wellness programs are accessible and available in their workplace, through their health provider, and in their communities.</q>
+                  <p class="author">- Rob Wittman</p>
+                </div>
+
+                <div class="mySlides">
+                  <q>Today the demands are for even higher standards in the quality of care, for greater flexibility and convenience in treatment times, and for more prevention through screening and health checks. </q>
+                  <p class="author">- Lucy Powell/p>
+                </div>
+
+                <div class="mySlides">
+                  <q>Medical science has proven time and again that when the resources are provided, great progress in the treatment, cure, and prevention of disease can occur.</q>
+                  <p class="author">-  Michael J. Fox</p>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                </div>
+
+                <div class="dot-container">
+                  <span class="dot" onclick="currentSlide(1)"></span> 
+                  <span class="dot" onclick="currentSlide(2)"></span> 
+                  <span class="dot" onclick="currentSlide(3)"></span> 
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; CDSS - Machine Learnig Way 2018.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/diseaseform/vendor/jquery/jquery.min.js"></script>
+    <script src="static/diseaseform/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="static/diseaseform/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+  <!--===============================================================================================-->
+      <script src="static/diseaseform/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+      <script src="static/diseaseform/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+      <script src="static/diseaseform/vendor/bootstrap/js/popper.js"></script>
+      <script src="static/diseaseform/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+      <script src="static/diseaseform/vendor/select2/select2.min.js"></script>
+      <script>
+        $(".selection-2").select2({
+          minimumResultsForSearch: 20,
+          dropdownParent: $('#dropDownSelect1')
+        });
+      </script>
+    <!--===============================================================================================-->
+      <script src="static/diseaseform/vendor/daterangepicker/moment.min.js"></script>
+      <script src="static/diseaseform/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+      <script src="static/diseaseform/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+      <script src="static/diseaseform/js/main.js"></script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+      </script>
+ <script type="text/javascript">
+   $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+ </script>
+ <script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+     <script>
+  $(function() {
+    $('#diabetesPredict').click(function() {
+ 
+        $.ajax({
+            url: '/diabetesPredictionPage',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+      });
+    });
+
+    </script> 
+{% endblock %}
+  </body>
+
+</html>
